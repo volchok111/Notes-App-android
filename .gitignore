@@ -1,0 +1,45 @@
+# Gradle files
+.gradle/
+build/
+**/build/
+
+# Android Studio
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Local properties
+local.properties
+.DS_Store
+
+# Log files
+*.log
+
+# Generated files
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Keystore files (Important for signing)
+*.keystore
+*.jks
+
+# Jetpack Compose Preview Caches
+.compose-cache/
+
+# IntelliJ-based IDE files
+.idea/caches/
+.idea/libraries/
+.idea/workspace.xml
+.idea/modules.xml
+.idea/.name
+.idea/gradle.xml
+.idea/misc.xml
+.idea/assetWizardSettings.xml
+
+# Misc
+*.swp
+*.swo
+*.bak
+*.tmp
