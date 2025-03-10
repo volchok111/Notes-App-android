@@ -1,4 +1,4 @@
-package com.metra.notesapp
+package com.metra.notesapp.app.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -11,7 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.metra.notesapp.ui.theme.NotesAppTheme
+import com.metra.notesapp.library.ui.NotesAppTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
