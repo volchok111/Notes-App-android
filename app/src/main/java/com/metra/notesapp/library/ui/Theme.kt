@@ -1,6 +1,5 @@
-package com.metra.notesapp.ui.theme
+package com.metra.notesapp.library.ui
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
