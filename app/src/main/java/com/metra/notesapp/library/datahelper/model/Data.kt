@@ -1,4 +1,4 @@
-package com.metra.notesapp.library.data.model
+package com.metra.notesapp.library.datahelper.model
 
 sealed class Data<out T> {
 
