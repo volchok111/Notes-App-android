@@ -1,4 +1,4 @@
-package com.metra.notesapp.library.data.model
+package com.metra.notesapp.library.datahelper.model
 
 /**
  * Invoke the given block of code in try-catch block and return a [Data] object with the result.
