@@ -68,6 +68,9 @@ dependencies {
     // coroutines
     implementation(libs.kotlin.coroutines)
 
+    // navigation
+    implementation(libs.navigation)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
