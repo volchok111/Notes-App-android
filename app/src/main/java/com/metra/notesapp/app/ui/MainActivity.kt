@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import com.metra.notesapp.library.navigation.NavigationStack
 import com.metra.notesapp.library.ui.NotesAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -14,6 +15,8 @@ class MainActivity : ComponentActivity() {
             NotesAppTheme {
                 MainScreen()
             }
+
+            NavigationStack()
         }
     }
 }
