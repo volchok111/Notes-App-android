@@ -65,6 +65,9 @@ dependencies {
     implementation(libs.room.paging)
     annotationProcessor(libs.room.compiler)
 
+    // system ui controller
+    implementation(libs.accompannist.uicontroller)
+
     // coroutines
     implementation(libs.kotlin.coroutines)
 

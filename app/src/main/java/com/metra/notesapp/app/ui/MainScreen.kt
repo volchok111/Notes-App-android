@@ -13,12 +13,14 @@ import androidx.navigation.NavOptions
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.metra.notesapp.app.model.BackNavigationEvent
 import com.metra.notesapp.app.model.ForwardNavigationEvent
 import com.metra.notesapp.app.model.NavigationEvent
 import com.metra.notesapp.app.model.Route
 import com.metra.notesapp.app.presentation.MainViewModel
 import com.metra.notesapp.feature.home.ui.HomeScreen
+import com.metra.notesapp.library.ui.CustomColors
 import com.metra.notesapp.library.ui.NotesAppTheme
 import org.koin.androidx.compose.koinViewModel
 
@@ -45,7 +47,15 @@ private fun MainScreenImpl(
     viewModel: MainViewModel
 ) {
     NotesAppTheme {
+        val systemUiController = rememberSystemUiController()
         val navController = rememberNavController()
+
+        SideEffect {
+            systemUiController.setSystemBarsColor(
+                color = CustomColors.white,
+                darkIcons = true
+            )
+        }
 
         // Observes navigation events and performs navigation actions
         NavigationEffect(
