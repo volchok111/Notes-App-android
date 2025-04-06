@@ -13,4 +13,5 @@ object CustomColors {
 
     val black = Color(0xFF000000)
     val white = Color(0xFFFFFFFF)
+    val blue = Color(0xff336dfe)
 }

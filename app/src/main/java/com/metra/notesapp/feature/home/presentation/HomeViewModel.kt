@@ -1,10 +1,15 @@
 package com.metra.notesapp.feature.home.presentation
 
+import com.metra.notesapp.app.device.GlobalNavigationController
 import com.metra.notesapp.library.db.model.ReminderPriority
 import com.metra.notesapp.library.db.model.ReminderRepeatType
 import com.metra.notesapp.library.mvvm.presentation.AbstractViewModel
 
-class HomeViewModel : AbstractViewModel<HomeViewModel.State>(State()) {
+class HomeViewModel(
+    private val globalNavigationController: GlobalNavigationController
+) : AbstractViewModel<HomeViewModel.State>(State()) {
+
+    fun onAddClick() = globalNavigationController.goToAdd()
 
     data class State(
         val reminders: List<ReminderItem> = emptyList()

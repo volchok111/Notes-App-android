@@ -22,6 +22,8 @@ class GlobalNavigationController :
 
     override fun goToHome() = goTo(ForwardNavigationEvent(Route.Home, clearBackStack = true))
 
+    override fun goToAdd() = goTo(ForwardNavigationEvent(Route.Add, clearBackStack = true))
+
     private fun goTo(navigationEvent: NavigationEvent) {
         _navigationEvent.tryEmit(navigationEvent)
     }

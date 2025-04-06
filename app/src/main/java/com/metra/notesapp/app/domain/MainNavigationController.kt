@@ -14,4 +14,6 @@ interface MainNavigationController {
     fun goBack()
 
     fun goToHome()
+
+    fun goToAdd()
 }

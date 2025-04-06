@@ -1,7 +1,6 @@
 package com.metra.notesapp.app.ui
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -19,6 +18,7 @@ import com.metra.notesapp.app.model.ForwardNavigationEvent
 import com.metra.notesapp.app.model.NavigationEvent
 import com.metra.notesapp.app.model.Route
 import com.metra.notesapp.app.presentation.MainViewModel
+import com.metra.notesapp.feature.add.ui.AddScreen
 import com.metra.notesapp.feature.home.ui.HomeScreen
 import com.metra.notesapp.library.ui.CustomColors
 import com.metra.notesapp.library.ui.NotesAppTheme
@@ -56,7 +56,6 @@ private fun MainScreenImpl(
                 darkIcons = true
             )
         }
-
         // Observes navigation events and performs navigation actions
         NavigationEffect(
             navController = navController,
@@ -64,16 +63,12 @@ private fun MainScreenImpl(
             onNavigationEventConsumed = viewModel::onNavigationEventConsumed
         )
 
-        Column(
-            modifier = Modifier.fillMaxSize()
-        ) {
-            Screens(
-                navController = navController,
-                modifier = Modifier
-                    .weight(1f)
-                    .background(MaterialTheme.colorScheme.background)
-            )
-        }
+        Screens(
+            navController = navController,
+            modifier = Modifier
+                .background(MaterialTheme.colorScheme.background)
+                .fillMaxSize()
+        )
     }
 }
 
@@ -91,6 +86,7 @@ private fun Screens(
         modifier = modifier
     ) {
         composable(Route.Home()) { HomeScreen() }
+        composable(Route.Add()) { AddScreen() }
     }
 }
 

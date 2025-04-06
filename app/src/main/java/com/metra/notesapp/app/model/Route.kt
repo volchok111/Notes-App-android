@@ -7,7 +7,7 @@ package com.metra.notesapp.app.model
 
 enum class Route {
     Home,
-    Details,
+    Add,
     Settings;
 
     /**

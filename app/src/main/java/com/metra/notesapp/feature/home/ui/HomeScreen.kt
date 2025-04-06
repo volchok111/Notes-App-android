@@ -11,23 +11,31 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Checkbox
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.metra.notesapp.feature.home.presentation.HomeViewModel
 import com.metra.notesapp.library.ui.CustomColors
 import com.metra.notesapp.library.ui.CustomDimensions
+import com.metra.notesapp.library.ui.CustomIcon
 import com.metra.notesapp.library.ui.CustomText
-import com.metra.notesapp.library.ui.CustomTopBar
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun HomeScreen() {
@@ -71,21 +79,36 @@ fun HomeScreen() {
             description = "When a design is unbalanced, the individual elements dominate the whole."
         )
     )
-    HomeScreenImpl(items)
+    val viewModel = koinViewModel<HomeViewModel>()
+    val state = viewModel.states.collectAsState()
+    HomeScreenImpl(items, viewModel::onAddClick)
 }
 
 @Composable
-private fun HomeScreenImpl(items: List<Item>) {
+private fun HomeScreenImpl(
+    items: List<Item> = emptyList(),
+    onAddClick: () -> Unit
+) {
     Scaffold(
-        topBar = {
-            CustomTopBar(title = "Test")
-        },
-        containerColor = CustomColors.white
+        floatingActionButton = {
+            FloatingActionButton(
+                onClick = { onAddClick() },
+                containerColor = CustomColors.blue,
+                contentColor = CustomColors.white,
+                shape = CircleShape
+            ) {
+                CustomIcon(
+                    icon = Icons.Default.Add,
+                    contentDescription = "Add Icon",
+                    tint = CustomColors.white
+                )
+            }
+        }
     ) { paddingValues ->
         Box(
             modifier = Modifier
-                .padding(paddingValues)
                 .fillMaxSize()
+                .padding(paddingValues)
         ) {
             val leftColumnItems = items.filterIndexed { index, _ -> index % 2 == 0 }
             val rightColumnItems = items.filterIndexed { index, _ -> index % 2 != 0 }
@@ -93,7 +116,7 @@ private fun HomeScreenImpl(items: List<Item>) {
             LazyColumn(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(CustomDimensions.sizeXS),
+                    .padding(CustomDimensions.sizeS),
                 verticalArrangement = Arrangement.spacedBy(CustomDimensions.sizeXS),
                 contentPadding = PaddingValues(bottom = CustomDimensions.sizeXS)
             ) {
@@ -172,7 +195,6 @@ private fun ReminderCardItem(
                             .fillMaxWidth()
                             .padding(start = 0.dp, bottom = CustomDimensions.sizeXS)
                     ) {
-//                        CustomCheckbox(checked = taskStates[index], onCheckedChange = { taskStates[index] = it })
                         Checkbox(
                             checked = taskStates[index],
                             onCheckedChange = { taskStates[index] = it },
